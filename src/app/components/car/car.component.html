@@ -1,21 +1,29 @@
-<div class="row">
-  <div class="col-lg-4 col-md-6 col-sm-12 mb-3" *ngFor="let car of cars">
-    <div  class="card" style="width: 100%;">
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araç ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Araba markası giriniz">
+</div>
+<div *ngIf="filterText.length>2" class="alert alert-success"> {{filterText}} aradınız</div>
+<div class="row" >
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-3" *ngFor="let car of cars | filterPipe:filterText" >
+    <div  class="card" style="width: 100%;" >
       <img src="{{imageBasePath}}{{car.imagePath}}" class="card-img-top" alt="Araba Resmi">
       <div class="card-body">
-        <p class="card-text">Marka : {{ car.brandName }}</p>
+        <p class="card-text">Marka : {{ car.brandName | uppercase}}</p>
         <p class="card-text">Model YIl : {{ car.modelYear }}</p>
         <p class="card-text">Renk : {{ car.colorName }}</p>
         <p class="card-text">Günlük Fiyat: {{ car.dailyPrice }} ₺</p>
+        <p class="card-text">KDV'li günlük Fiyat: {{ car.dailyPrice |vatAdded:10 }} ₺</p>
         <p class="card-text">Açıklama : {{car.carName}}</p>
+        <p button (click)="addToCart(car)" type="button" class="btn btn-success">Sepete ekle</p>  
+        <p button type="button" class="btn btn-primary" routerLink="/cardetail/{{ car.id }}">Detaylar</p>
       </div>
-      <div class="card-footer d-flex justify-content-between">
+      <!-- <div class="card-footer d-flex justify-content-between">
         <input
           class="btn btn-primary"
           type="button"
           value="Details"
           routerLink="/cardetail/{{ car.id }}"
         />
-      </div>
+      </div> -->
     </div>
   </div> 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
+import { CartService } from 'src/app/services/cart.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -15,7 +17,8 @@ export class CarComponent implements OnInit {
   imageBasePath  = environment.imageUrl;
   filterText = "";
   
-  constructor(private carService: CarService, private activatedRoute: ActivatedRoute) { }
+  constructor(private carService: CarService, private activatedRoute: ActivatedRoute, 
+    private toastrService: ToastrService, private cartService:CartService) { }
 
   ngOnInit(): void {
 
@@ -64,6 +67,14 @@ export class CarComponent implements OnInit {
     }
   }
 
+  addToCart(car:Car){
+    if(car.id===1){
+      this.toastrService.error("Bu ürün sepete eklenemez")
+    }else{
+    this.toastrService.success("Sepete eklendi", car.carName)
+    this.cartService.addToCart(car);
+    }
+  }
 
 }
 
