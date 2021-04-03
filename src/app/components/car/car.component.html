@@ -1,22 +1,21 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-</div>
-<table class="table">
-    <thead *ngIf="dataLoaded==true">
-        <th>Id</th>
-        <th>Markası</th>
-        <th>Araba İsmi</th>
-        <th>Modeli</th>
-        <th>Rengi</th>
-        <th>Günlük ücreti</th>
-
-    </thead>
-    <tr *ngFor="let car of cars">
-        <td>{{car.id}}</td>
-        <td>{{car.brandName}}</td>
-        <td>{{car.carName}}</td>
-        <td>{{car.modelYear}}</td>
-        <td>{{car.colorName}}</td>
-        <td>{{car.dailyPrice}}</td>
-    </tr>
-</table>
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-3" *ngFor="let car of cars">
+    <div  class="card" style="width: 100%;">
+      <img src="{{imageBasePath}}{{car.imagePath}}" class="card-img-top" alt="Araba Resmi">
+      <div class="card-body">
+        <p class="card-text">Marka : {{ car.brandName }}</p>
+        <p class="card-text">Model YIl : {{ car.modelYear }}</p>
+        <p class="card-text">Renk : {{ car.colorName }}</p>
+        <p class="card-text">Günlük Fiyat: {{ car.dailyPrice }} ₺</p>
+        <p class="card-text">Açıklama : {{car.carName}}</p>
+      </div>
+      <div class="card-footer d-flex justify-content-between">
+        <input
+          class="btn btn-primary"
+          type="button"
+          value="Details"
+          routerLink="/cardetail/{{ car.id }}"
+        />
+      </div>
+    </div>
+  </div> 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
-import { CustomerResponseModel } from 'src/app/models/customerResponseModel';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
