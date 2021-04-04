@@ -1,7 +1,32 @@
-<ul class="list-group">
+<!-- <ul class="list-group">
 
     <li [class]="getAllBrandClass()" routerLink = "/cars">Tüm Arabalar</li>
     <li (click)="setCurrentBrand(brand)" routerLink = "/cars/brand/{{brand.id}}"
      *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.name}}</li>
 
-</ul>
+</ul> -->
+
+<div><h4>Markalar</h4></div>
+  <div *ngIf="dataLoaded==false" class="spinner-border text-secondary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <div class="mb-3">
+    <!-- <label for="filterText" class="form-label">Search brand</label> -->
+    <input type="text" [(ngModel)]="filterText"class="form-control" id="filterText" placeholder="marka ara">
+  </div>
+
+<div *ngIf="filterText"class="alert alert-success">
+  Aranan marka: {{filterText}} 
+</div>
+
+ <ul class="list-group" *ngIf="dataLoaded==true">
+    <li [class]="getAllBrandsClass()" 
+    (click)="currentResetter(nullBrand)"
+    routerLink="/cars/brand()"
+    >Tüm markalar</li>
+
+    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}"  
+     *ngFor="let brand of brands |filterBrand:filterText" [class]="getCurrentBrandClass(brand)">{{brand.name|titlecase}}</li>
+    
+  </ul> 
