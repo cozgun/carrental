@@ -27,7 +27,7 @@ export class CarComponent implements OnInit {
   dataLoaded=false;
   colorId:number;
   brandId:number;
-  
+    
   constructor(private carService: CarService, 
     private activatedRoute: ActivatedRoute, 
     private toastrService: ToastrService, 
@@ -58,7 +58,7 @@ export class CarComponent implements OnInit {
   }
 
   getSelectedBrand(brandId:number){
-    if(this.brandIdFilter==brandId){
+    if(this.brandId==brandId){
       return true;
     }
     else{
@@ -111,12 +111,11 @@ export class CarComponent implements OnInit {
   addToCart(car:Car){
     this.toastrService.success("Sepete eklendi", car.carName)
     this.cartService.addToCart(car);
-    
   }
 
   getBrands(){
-    this.brandService.getBrands().subscribe(respone => {
-      this.brands = respone.data;
+    this.brandService.getBrands().subscribe(response => {
+      this.brands = response.data;
     })
   }
   

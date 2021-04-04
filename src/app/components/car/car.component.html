@@ -1,4 +1,4 @@
-<div class="input-group">
+<!-- <div class="input-group">
   <span class="input-group-text">Marka ve renge göre arayın</span>
   <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Markaya göre filtrele">
   <input type="text" [(ngModel)]="filterTextColor" class="form-control" id="filterTextColor" placeholder="Renge göre filtrele">
@@ -7,62 +7,98 @@
 <div >
   <span *ngIf="(filterText.length + filterTextColor.length) >2" class="alert alert-warning"> marka: {{filterText}} , renk: {{filterTextColor}} için arama sonuçları gösteriliyor</span>
 </div>
-<br>
+<br> -->
 
 <div class="row mb-3">
-  <div class="col col-2"><span class="input-group-text" >Marka ara</span></div>
+  <div class="col col-2"><span class="input-group-text" id="brandselect">Marka ara</span></div>
   <div class="col col-2">
-    <select [(ngModel)]="brandId" class="form-select" aria-label="Default select example">
-      <option *ngFor="let brand of brands" 
-      [value]="brand.id"
-      [selected]="getSelectedBrand(brand.id)">      
+    <select
+      [(ngModel)]="brandId"
+      class="form-select"
+      aria-label="Default select example"
+    >
+      <option
+        *ngFor="let brand of brands"
+        [value]="brand.id"
+        [selected]="getSelectedBrand(brand.id)"
+      >
         {{ brand.name }}
       </option>
     </select>
   </div>
-  <div class="col col-2"><span class="input-group-text">renk ara</span></div>
+  <div class="col col-2"><span class="input-group-text" id="colorselect">renk ara</span></div>
   <div class="col col-2">
-    <select [(ngModel)] = "colorId" class="form-select" aria-label="Default select example">
-      <option *ngFor="let color of colors"
-      [value]="color.id"
-      [selected] = "getSelectedColor(color.id)">
+    <select
+      [(ngModel)]="colorId"
+      class="form-select"
+      aria-label="Default select example"
+    >
+      <option
+        *ngFor="let color of colors"
+        [value]="color.id"
+        [selected]="getSelectedColor(color.id)"
+      >
         {{ color.name }}
       </option>
     </select>
   </div>
   <div class="col col-1">
     <div class="btn-group">
-      <button (click)="getCarsByFilter(brandId,colorId)" type="button" class="btn btn-warning">Filtrele</button>
+      <button
+        (click)="getCarsByFilter(brandId, colorId)" type="button" class="btn btn-warning"
+      >
+        Filtrele
+      </button>
     </div>
   </div>
   <div class="col col-1">
     <div class="btn-group">
-      <button routerLink="/cars" type="button" class="btn btn-danger">Temizle</button>
+      <button routerLink="/cars/" type="button" class="btn btn-danger" (click)="getCars()">
+        Temizle
+      </button>
     </div>
   </div>
-<br>
-<br>
-<div class="row" >
-  <div class="col-lg-4 col-md-6 col-sm-12 mb-3" *ngFor="let car of cars | filterPipe:filterText | colorPipe:filterTextColor" >
-    <div  class="card" style="width: 100%;" >
-      <img src="{{imageBasePath}}{{car.imagePath}}" class="card-img-top" alt="Araba Resmi">
-      <div class="card-body">
-        <p class="card-text">Marka : {{ car.brandName | uppercase}}</p>
-        <p class="card-text">Model YIl : {{ car.modelYear }}</p>
-        <p class="card-text">Renk : {{ car.colorName }}</p>
-        <p class="card-text">Günlük Fiyat: {{ car.dailyPrice }} ₺</p>
-        <p class="card-text">KDV'li günlük Fiyat: {{ car.dailyPrice |vatAdded:10 }} ₺</p>
-        <p class="card-text">Açıklama : {{car.carName}}</p>
-        <p button (click)="addToCart(car)" type="button" class="btn btn-success">Sepete ekle</p>  
-        <p button type="button" class="btn btn-primary" routerLink="/cardetail/{{ car.id }}">Detaylar</p>
-      </div>
-      <!-- <div class="card-footer d-flex justify-content-between">
-        <input
-          class="btn btn-primary"
-          type="button"
-          value="Details"
-          routerLink="/cardetail/{{ car.id }}"
+
+
+
+  <br />
+  <br />
+  <div class="row">
+    <!-- <div class="col-lg-4 col-md-6 col-sm-12 mb-3" *ngFor="let car of cars | filterPipe:filterText | colorPipe:filterTextColor" > -->
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-3" *ngFor="let car of cars">
+      <div class="card" style="width: 100%">
+        <img
+          src="{{ imageBasePath }}{{ car.imagePath }}"
+          class="card-img-top"
+          alt="Araba Resmi"
         />
-      </div> -->
+        <div class="card-body">
+          <p class="card-text">Marka : {{ car.brandName | uppercase }}</p>
+          <p class="card-text">Model YIl : {{ car.modelYear }}</p>
+          <p class="card-text">Renk : {{ car.colorName }}</p>
+          <p class="card-text">Günlük Fiyat: {{ car.dailyPrice }} ₺</p>
+          <p class="card-text">
+            KDV'li günlük Fiyat: {{ car.dailyPrice | vatAdded: 10 }} ₺
+          </p>
+          <p class="card-text">Açıklama : {{ car.carName }}</p>
+          <p
+            button
+            (click)="addToCart(car)"
+            type="button"
+            class="btn btn-success"
+          >
+            Sepete ekle
+          </p>
+          <p
+            button
+            type="button"
+            class="btn btn-primary"
+            routerLink="/cardetail/{{ car.id }}"
+          >
+            Detaylar
+          </p>
+        </div>
+      </div>
     </div>
-  </div> 
+  </div>
+</div>

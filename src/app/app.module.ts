@@ -19,6 +19,7 @@ import {ToastrModule} from 'ngx-toastr';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { ColorPipePipe } from './pipes/color-pipe.pipe';
 import { FilterBrandPipe } from './pipes/filter-brand.pipe';
+import { FilterPipeSelectPipe } from './pipes/filter-pipe-select.pipe';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { FilterBrandPipe } from './pipes/filter-brand.pipe';
     CartSummaryComponent,
     ColorPipePipe,
     FilterBrandPipe,
+    FilterPipeSelectPipe,
 
   ],
   imports: [
