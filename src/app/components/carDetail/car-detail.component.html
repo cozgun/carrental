@@ -38,31 +38,46 @@
       </button>
     </div>
 
-    <table class="table table-striped mt-2">
+    <table class="table table-striped mt-2" >
       <tbody>
         <tr>
           <th scope="row">Marka</th>
-          <td>{{ car.brandName }}</td>
+          <td>{{ cars.brandName }}</td>
         </tr>
         <tr>
           <th scope="row">Renk</th>
-          <td>{{ car.colorName }}</td>
+          <td>{{ cars.colorName }}</td>
         </tr>
         <tr>
           <th scope="row">Fiyat</th>
-          <td>{{ car.dailyPrice }}/Gunluk</td>
-        </tr>
+          <td>{{ cars.dailyPrice }}/Gunluk</td>
+        </tr >
         <tr>
           <th scope="row">Model Yılı</th>
           <td>
-            {{ car.modelYear }}
+            {{ cars.modelYear }}
           </td>
         </tr>
         <tr>
           <th scope="row">Aciklama</th>
-          <td>{{ car.carName }}</td>
+          <td>{{ cars.carName }}</td>
         </tr>
       </tbody>
     </table>
   </div>
+  <!-- <div class="row">
+     <app-rental [car] = "cars"></app-rental>
+  </div> -->
+
+  <div class="d-grid gap-2 mb-2">
+    <div *ngIf = "cars.status == true" class="dd-grid gap-2 mb-2">
+      <div style="margin: auto;">
+        <app-rental [car] = "cars"></app-rental>
+      </div>
+    </div>
+  </div>
+  <div class="dd-grid gap-2 mb-2" *ngIf = "cars.status == false">
+    <div class="alert alert-danger">Araç şu an kiralanamaz.</div>
+  </div>
+
 </div>

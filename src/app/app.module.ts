@@ -20,6 +20,7 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
 import { ColorPipePipe } from './pipes/color-pipe.pipe';
 import { FilterBrandPipe } from './pipes/filter-brand.pipe';
 import { FilterPipeSelectPipe } from './pipes/filter-pipe-select.pipe';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { FilterPipeSelectPipe } from './pipes/filter-pipe-select.pipe';
     ColorPipePipe,
     FilterBrandPipe,
     FilterPipeSelectPipe,
+    PaymentComponent,
 
   ],
   imports: [
