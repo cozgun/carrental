@@ -81,22 +81,34 @@
             KDV'li günlük Fiyat: {{ car.dailyPrice | vatAdded: 10 }} ₺
           </p>
           <p class="card-text">Açıklama : {{ car.carName }}</p>
-          <p
-            button
-            (click)="addToCart(car)"
-            type="button"
-            class="btn btn-success"
-          >
-            Sepete ekle
-          </p>
-          <p
+
+          <!-- <p
+          button
+          (click)="addToCart(car)"
+          type="button"
+          class="btn btn-success"
+        >
+          Sepete ekle
+        </p> -->
+
+          <!-- <p
             button
             type="button"
             class="btn btn-primary"
             routerLink="/cardetail/{{ car.id }}"
           >
             Detaylar
-          </p>
+          </p> -->
+
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-primary active btn-sm"  (click)="addToCart(car)">Sepete ekle</button>
+            <button type="button" class="btn btn-info active btn-sm"  routerLink="/cardetail/{{ car.id }}">Detaya bak</button>
+            <button type="button" class="btn btn-primary btn-sm" routerLink="/cars/update/{{ car.id }}" ><span style="font-size:smaller;">Günc.</span></button>
+          </div>
+      
+
+
+
         </div>
       </div>
     </div>

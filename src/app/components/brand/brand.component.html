@@ -27,7 +27,24 @@
     routerLink="/cars/brand()"
     >Tüm markalar</li>
 
-    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}"  
-     *ngFor="let brand of brands |filterBrand:filterText" [class]="getCurrentBrandClass(brand)">{{brand.name|titlecase}}</li>
+    <li *ngFor="let brand of brands |filterBrand:filterText" [class]="getCurrentBrandClass(brand)">
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <button type="button" class="btn btn-primary active btn-sm" (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}">{{brand.name}} </button>
+      <button type="button" class="btn btn-primary btn-sm" routerLink="/brands/update/{{ brand.id }}"  ><span style="font-size:smaller;">Günc.</span></button>
+    </div>
     
+  </li>
+
+    <!-- <li *ngFor="let brand of brands |filterBrand:filterText" [class]="getCurrentBrandClass(brand)"> <button type="button" class="btn btn-success btn-sm" (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}">{{brand.name}} </button> 
+      &nbsp; <span routerLink="/brands/update/{{ brand.id }}" class="badge bg-secondary">...</span>  
+     </li> -->
+
+
+     <!-- <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}"  
+     *ngFor="let brand of brands |filterBrand:filterText" [class]="getCurrentBrandClass(brand)">{{brand.name|titlecase}} 
+     <span routerLink="/brands/update/1" class="badge bg-secondary">Güncelle</span></li> -->
+
+     <!-- (click)="removeFromCart(" + {{ brand.id }} ")" -->
+     <!-- routerLink="/brands/update/{{ brand.id }}" -->
+     <!-- (click)="updateBrand()" -->
   </ul> 

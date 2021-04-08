@@ -21,13 +21,24 @@
   Aranan renk: {{filterTextColor}} 
 </div>
 
- <ul class="list-group" *ngIf="dataLoaded==true">
+ 
+
+<ul class="list-group" *ngIf="dataLoaded==true">
     <li [class]="getAllColorClass()" 
     (click)="currentResetter(nullColor)"
     routerLink="/cars/color()"
     >Tüm renkler</li>
 
-    <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}"  
-     *ngFor="let color of colors |colorPipe:filterTextColor" [class]="getCurrentColorClass(color)">{{color.name|titlecase}}</li>
+    <li *ngFor="let color of colors |colorPipe:filterTextColor" [class]="getCurrentColorClass(color)">
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <button type="button" class="btn btn-primary active btn-sm" (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}">{{color.name}} </button>
+        <button type="button" class="btn btn-primary btn-sm" routerLink="/colors/update/{{ color.id }}"  ><span style="font-size:smaller;">Günc.</span></button>
+      </div>
+      
+    </li>
+
+
+    <!-- <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}"  
+     *ngFor="let color of colors |colorPipe:filterTextColor" [class]="getCurrentColorClass(color)">{{color.name|titlecase}}</li> -->
     
   </ul> 

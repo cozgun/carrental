@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment';
 import { Car } from '../models/car';
 import { CarDetail } from '../models/carDetail';
 import { ListResponseModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 
 //Service
@@ -49,6 +51,19 @@ export class CarService {
   getCarsByFilter(brandId:number,colorId:number): Observable<ListResponseModel<Car>>{
     let newPath=this.apiUrl+"cars/getcarfilter?brandId="+brandId+"&colorId="+colorId;
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+  
+  add(car:Car): Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/add",car)
+  }
+
+  update(car:Car):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/update",car);
+  }
+
+  getCarById(carId:number):Observable<SingleResponseModel<Car>>{
+    let path = this.apiUrl+"cars/getbyid?id="+carId;
+    return this.httpClient.get<SingleResponseModel<Car>>(path);
   }
 }
 

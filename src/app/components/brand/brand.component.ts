@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-brand',
@@ -13,6 +14,7 @@ export class BrandComponent implements OnInit {
   currentBrand: Brand;
   nullBrand: Brand;
   filterText = "";
+  router: any;
   constructor(private brandService: BrandService) {}
 
   ngOnInit(): void {
@@ -29,14 +31,16 @@ export class BrandComponent implements OnInit {
   }
   getCurrentBrandClass(brand: Brand) {
     if (brand == this.currentBrand) {
-      return 'list-group-item active';
+      return 'list-group-item ';
+//      return 'list-group-item active';
     } else {
       return 'list-group-item';
     }
   }
   getAllBrandsClass() {
     if (!this.currentBrand) {
-      return 'list-group-item active';
+      return 'list-group-item';
+      //return 'list-group-item active';
     } else {
       return 'list-group-item';
     }
@@ -44,6 +48,14 @@ export class BrandComponent implements OnInit {
   currentResetter(nullBrand: Brand) {
     this.currentBrand = nullBrand;
   }
+
+  updateBrand() {
+    myId:Number;
+    const myId=this.currentBrand.id
+    this.router(["/brands/update/" + myId]);
+    
+    //.navigate(["/brands/update/" + myId])
+};
 }
 
 // import { Component, OnInit } from '@angular/core';

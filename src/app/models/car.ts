@@ -11,5 +11,8 @@ export interface Car{
     description : string;
     status?:boolean;
     carImages : CarImage[];
+    colorId:number;
+    brandId:number;
+
 }
 
