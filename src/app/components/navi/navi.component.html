@@ -1,26 +1,92 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <app-cart-summary></app-cart-summary>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" type="button" href="">Anasayfa</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active"  href="#">Araçlarımız</a>
+        </li>
+       
+        <!-- <li class="nav-item">
+          <a class="nav-link active" type="button" aria-current="page"   routerLink="/cars/" >Araç İşlemleri</a>
+        </li> -->
+       
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarNavDarkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Yönetici işlemleri
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark"  aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" type="button"routerLink="/brands/add">Marka ekle</a></li>
+            <li><a class="dropdown-item" type="button" routerLink="/colors/add">Renk ekle</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" type="button" routerLink="/cars/add">Araç ekle</a></li>
+          </ul>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Bize Ulaşın</a>
+        </li> -->
+      </ul>
+    <div class="text-end" *ngIf="checkToLogin()==false">
+      <button routerLink="/login/" type="button"  class="btn btn-primary active" style="margin-right: 10px;">Giriş yapın</button>
+      <button routerLink="/register/" type="button" class="btn btn-primary">Kayıt olun</button>
     </div>
-  </nav>
+    
+    
+    <div class="dropdown text-end" *ngIf="checkToLogin()==true">
+        <a
+        class="nav-link dropdown-toggle"
+        id="dropdownUser1"
+        data-bs-toggle="dropdown"
+        aria-expanded="true"
+         type="button"
+         style="color: rgb(10, 0, 0);"
+      >
+      Hoş Geldin {{this.user.firstName}}
+            
+      </a>
+      <div class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+        <li><a routerLink="/profileUpdate" class="dropdown-item">Hesabımı Güncelle</a></li>
+        <li><a class="dropdown-item">Kiralama Geçmişiniz</a></li>
+        <!-- <li><a routerLink="cars/add" class="dropdown-item">İşlem Geçmişi</a></li> -->
+        <!-- <li><a routerLink="/profile/" class="dropdown-item">Bize Ulaşın</a></li> -->
+       
+        <li><hr class="dropdown-divider" /></li>
+        <a (click)="logOut()" class="dropdown-item">Çıkış yap</a>
+      </div>
+  </div>
+
+</div>
+
+
+
+  
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <app-cart-summary></app-cart-summary>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav> -->

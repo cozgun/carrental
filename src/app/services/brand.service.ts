@@ -12,7 +12,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   })
   export class BrandService {
   
-    apiUrl = environment.apiURL +'brands/';;
+    apiUrl = environment.apiURL +'brands/';
   
   
     constructor(private httpClient:HttpClient) { }

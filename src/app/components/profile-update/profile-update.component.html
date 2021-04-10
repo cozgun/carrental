@@ -1,0 +1,127 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h5>Kullanıcı Bilgilerimi Güncelle</h5>
+        </div>
+        <div class="card-body">
+          <form *ngIf="user" [formGroup]="userUpdateForm">
+            <div class="mb-3">
+              <label for="firstName">Ad</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="firstName"
+                  formControlName="firstName"
+                  class="form-control"
+                  placeholder="Adınız"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="lastName">Soyad</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="lastName"
+                  formControlName="lastName"
+                  class="form-control"
+                  placeholder="Soyadınız"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="Email"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="userUpdate"></label>
+              <button (click)="userUpdate()" class="btn btn-primary">
+                Güncelle
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h5>Şirket Bilgilerimi Güncelle</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="customerUpdateForm">
+              <div class="mb-3">
+                <label for="companyName">Şirket Adı</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="companyName"
+                    formControlName="companyName"
+                    class="form-control"
+                    placeholder="Şirket Adı"
+                  />
+                </div>
+              </div>
+
+              <button class="btn btn-primary" (click)="customerUpdate()">
+                Güncelle
+              </button>
+            </form>
+          </div>
+        </div>
+        </div>
+        <br />
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-header">
+              <h5>Şifre Güncelle</h5>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="passwordUpdateForm">
+                
+                            <div class="mb-3">
+                            <label for="oldPassword">Eski Parola</label>
+                            <div class="form-group">
+                                <input
+                                type="password"
+                                id="oldPassword"
+                                formControlName="oldPassword"
+                                class="form-control"
+                                placeholder="Eski Parola"
+                                />
+                            </div>
+                            </div>
+
+                            <div class="mb-3">
+                            <label for="newPassword">Yeni Parola</label>
+                            <div class="input-group mb-3">
+                                <input
+                                type="password"
+                                class="form-control"
+                                formControlName="newPassword"
+                                id="newPassword"
+                                placeholder="Yeni Parola"
+                                />
+                            </div>
+                            </div>
+
+                            <button class="btn btn-primary" (click)="passwordUpdate()">
+                            Güncelle
+                            </button>
+              </form>
+            </div>
+          
+        </div>
+
+    </div>
+</div>
