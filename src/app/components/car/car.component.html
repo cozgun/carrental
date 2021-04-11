@@ -78,7 +78,7 @@
           <p class="card-text">Renk : {{ car.colorName }}</p>
           <p class="card-text">Günlük Fiyat: {{ car.dailyPrice }} ₺</p>
           <p class="card-text">
-            KDV'li günlük Fiyat: {{ car.dailyPrice | vatAdded: 10 }} ₺
+            KDV'li günlük Fiyat: {{ car.dailyPrice | vatAdded: 10 | number:'1.0-0' }} ₺
           </p>
           <p class="card-text">Açıklama : {{ car.carName }}</p>
 
@@ -101,9 +101,10 @@
           </p> -->
 
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-primary active btn-sm"  (click)="addToCart(car)">Sepete ekle</button>
+            
+            <!-- <button type="button" class="btn btn-primary active btn-sm"  (click)="addToCart(car)">Sepete ekle</button> -->
             <button type="button" class="btn btn-info active btn-sm"  routerLink="/cardetail/{{ car.id }}">Detaya bak</button>
-            <button type="button" class="btn btn-primary btn-sm" routerLink="/cars/update/{{ car.id }}" ><span style="font-size:smaller;">Günc.</span></button>
+            <button *ngIf= "checkToLogin()==true" type="button" class="btn btn-primary btn-sm" routerLink="/cars/update/{{ car.id }}" ><span style="font-size:smaller;">Günc.</span></button>
           </div>
       
 

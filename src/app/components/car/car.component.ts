@@ -9,6 +9,7 @@ import { Brand } from 'src/app/models/brand';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
 import { ColorService } from 'src/app/services/color.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-car',
@@ -33,7 +34,8 @@ export class CarComponent implements OnInit {
     private toastrService: ToastrService, 
     private cartService:CartService,    
     private brandService:BrandService,
-    private colorService:ColorService) { }
+    private colorService:ColorService,
+    private authService:AuthService) { }
 
   ngOnInit(): void {
 
@@ -128,6 +130,13 @@ export class CarComponent implements OnInit {
     this.carService.getCarsByFilter(brandId,colorId).subscribe(response=>{
       this.cars=response.data;
     });
+  }
+  checkToLogin(){
+    if(this.authService.isAuthenticated()){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }

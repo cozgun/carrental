@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:"cars/detail/:carId",component:CarDetailComponent},
   {path:"cardetail/:carId",component:CarDetailComponent},
   {path:"cars/filter/:brandId:colorId", component:CarComponent},
-  {path:"rental/:carId", component:RentalComponent},
+  {path:"rental/:carId", component:RentalComponent, canActivate:[LoginGuard]},
   {path:"payment/:rental",component:PaymentComponent},
   {path:"brands/add",component:BrandAddComponent, canActivate:[LoginGuard]},
   {path:"colors/add",component:ColorAddComponent, canActivate:[LoginGuard]},
@@ -35,12 +35,14 @@ const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"profileUpdate",component:ProfileUpdateComponent},
+  { path: '', pathMatch:"full",component: CarComponent },
+  { path: '**', component: CarComponent }
   
   
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -18,6 +18,7 @@ export class RentalComponent implements OnInit {
 
   customers:Customer[];
   customerId:number;
+  userId:any;
   rentDate: Date;
   returnDate : Date;
   @Input() car : Car;
@@ -93,7 +94,8 @@ export class RentalComponent implements OnInit {
     console.log(this.customerId);
   }
   getCustomer() {
-    this.customerService.getCustomers().subscribe((response) => {
+    this.userId = localStorage.getItem('id');
+    this.customerService.getCustomerByUserId(this.userId).subscribe((response) => {
       this.customers = response.data;
       console.log(response.data);
     });

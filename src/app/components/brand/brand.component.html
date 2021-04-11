@@ -30,7 +30,7 @@
     <li *ngFor="let brand of brands |filterBrand:filterText" [class]="getCurrentBrandClass(brand)">
     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
       <button type="button" class="btn btn-primary active btn-sm" (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}">{{brand.name}} </button>
-      <button type="button" class="btn btn-primary btn-sm" routerLink="/brands/update/{{ brand.id }}"  ><span style="font-size:smaller;">Günc.</span></button>
+      <button *ngIf="checkToLogin()==true" type="button" class="btn btn-primary btn-sm" routerLink="/brands/update/{{ brand.id }}"  ><span style="font-size:smaller;">Günc.</span></button>
     </div>
     
   </li>

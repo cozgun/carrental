@@ -62,6 +62,11 @@
           <th scope="row">Aciklama</th>
           <td>{{ cars.carName }}</td>
         </tr>
+        <tr>
+          <th scope="row">Gerekli findeks puanı</th>
+          <td>{{ cars.findeksFloor }}</td>
+        </tr>
+
       </tbody>
     </table>
   </div>
@@ -70,14 +75,19 @@
   </div> -->
 
   <div class="d-grid gap-2 mb-2">
-    <div *ngIf = "cars.status == true" class="dd-grid gap-2 mb-2">
+    <div *ngIf = "cars.status == true && checkToLogin()==true && getFindeksResult() == true" class="dd-grid gap-2 mb-2">
       <div style="margin: auto;">
         <app-rental [car] = "cars"></app-rental>
       </div>
     </div>
   </div>
+  <div class="dd-grid gap-2 mb-2" *ngIf = "checkToLogin()==false && cars.status == true">
+    <div class="alert alert-danger">Aracı kiralamak için giriş yapmalısınız. &nbsp;&nbsp;  &nbsp;&nbsp;   <button routerLink="/login/" type="button"  class="btn btn-primary" style="margin-right: 10px;">Giriş yapın</button> </div>
+  </div>
   <div class="dd-grid gap-2 mb-2" *ngIf = "cars.status == false">
     <div class="alert alert-danger">Araç şu an kiralanamaz.</div>
   </div>
-
+  <div class="dd-grid gap-2 mb-2" *ngIf = "checkToLogin()==true && cars.status == true && getFindeksResult() == false">
+    <div class="alert alert-danger">Aracı kiralamak için findeks puanınız yeterli değil. (Puanınız {{this.random}} ) </div>
+  </div>
 </div>

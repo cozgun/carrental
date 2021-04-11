@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-brand',
@@ -15,7 +16,7 @@ export class BrandComponent implements OnInit {
   nullBrand: Brand;
   filterText = "";
   router: any;
-  constructor(private brandService: BrandService) {}
+  constructor(private brandService: BrandService, private authService:AuthService) {}
 
   ngOnInit(): void {
     this.getBrands();
@@ -53,10 +54,20 @@ export class BrandComponent implements OnInit {
     myId:Number;
     const myId=this.currentBrand.id
     this.router(["/brands/update/" + myId]);
+
+  }
+    checkToLogin(){
+      if(this.authService.isAuthenticated()){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
     
     //.navigate(["/brands/update/" + myId])
 };
-}
+
 
 // import { Component, OnInit } from '@angular/core';
 // import { ToastrService } from 'ngx-toastr';

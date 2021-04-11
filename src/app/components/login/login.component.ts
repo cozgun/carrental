@@ -42,7 +42,9 @@ export class LoginComponent implements OnInit {
         //console.log("email");
         
        setTimeout(()=>{
-        this.router.navigate(['/cars']);
+        location.reload()
+        // this.router.navigate(['/']);
+        //this.router.navigate(['/cars']);
       },1000)
 
       },responseError=>{

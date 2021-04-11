@@ -6,6 +6,6 @@ export interface User{
     passwordHash:string;
     passwordSalt:string;
     status:boolean;
-    findexScore:number
+    
    
 }

@@ -8,6 +8,9 @@ import { SingleResponseModel } from '../models/singleResponseModel';
 import { TokenModel } from '../models/tokenModel';
 import { LocalStorageService } from './local-storage.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { Claims } from '../models/claims';
+import { ListResponseModel } from '../models/listResponseModel';
+import { observable, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -73,4 +76,10 @@ userDetailFromToken(){
   //console.log(this.lastName)
 }
 
+// getClaims(id:number):Observable<Claims>{
+//   return this.httpClient.get<Claims>('https://localhost:44332/api/user/getclaims?id='+id)
+  
+// }
+  
 }
+

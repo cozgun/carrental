@@ -13,6 +13,7 @@ export interface Car{
     carImages : CarImage[];
     colorId:number;
     brandId:number;
+    findeksFloor:number;
 
 }
 

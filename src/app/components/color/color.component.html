@@ -32,7 +32,7 @@
     <li *ngFor="let color of colors |colorPipe:filterTextColor" [class]="getCurrentColorClass(color)">
       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
         <button type="button" class="btn btn-primary active btn-sm" (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}">{{color.name}} </button>
-        <button type="button" class="btn btn-primary btn-sm" routerLink="/colors/update/{{ color.id }}"  ><span style="font-size:smaller;">Günc.</span></button>
+        <button *ngIf= "checkToLogin()==true" type="button" class="btn btn-primary btn-sm" routerLink="/colors/update/{{ color.id }}"  ><span style="font-size:smaller;">Günc.</span></button>
       </div>
       
     </li>
